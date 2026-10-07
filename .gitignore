@@ -1,0 +1,16 @@
+# ---> Java
+target/
+*.class
+# ---> Maven
+.mvn/
+# ---> H2 data + local secrets
+data/
+*.db
+config.properties
+# ---> IDE
+.idea/
+*.iml
+.vscode/
+# ---> OS
+.DS_Store
+Thumbs.db

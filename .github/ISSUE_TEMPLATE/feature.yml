@@ -1,0 +1,12 @@
+---
+name: Feature/Change Request
+about: Propose a feature or change
+---
+## Description
+## Motivation
+## Acceptance criteria
+## Affected layers (controller/service/dao/ui)
+## Impact analysis
+- Migration required?
+- API response changed?
+- Additive or shared-code change?
