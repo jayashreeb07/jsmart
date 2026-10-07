@@ -5,8 +5,8 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <main class="wrap">
 <h1>My Orders</h1>
-<c:if test="${param.success != null}"><p class="ok">Order #<c:out value="${param.success}"/> placed!
-<a href="${pageContext.request.contextPath}/orders/<c:out value='${param.success}'/>">Track your order</a></p></c:if>
+<c:if test="${param.success != null}"><p class="ok">Order placed successfully! Order #<c:out value="${param.success}"/> has been placed.
+<a href="${pageContext.request.contextPath}/orders/<c:out value='${param.success}'/>">Track Order</a> · <a href="${pageContext.request.contextPath}/orders">View My Orders</a></p></c:if>
 <c:forEach var="o" items="${orders}">
 <div class="card"><b>Order #<c:out value="${o.id}"/></b> — <c:out value="${o.status}"/> — ₹<c:out value="${o.totalAmount}"/>
 <ul><c:forEach var="i" items="${o.items}"><li><c:out value="${i.productName}"/> × <c:out value="${i.quantity}"/></li></c:forEach></ul>

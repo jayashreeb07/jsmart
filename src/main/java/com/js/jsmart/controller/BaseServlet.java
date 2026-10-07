@@ -56,4 +56,41 @@ public abstract class BaseServlet extends HttpServlet {
     req.setAttribute("message", e.getMessage());
     req.getRequestDispatcher("/WEB-INF/views/error/500.jsp").forward(req, resp);
   }
+
+  /**
+   * Human-readable message for browser form flows. Technical detail stays in logs.
+   * @param e failure
+   * @return clean message safe to show users
+   */
+  protected String friendly(Exception e) {
+    if (e instanceof ValidationException) {
+      return e.getMessage();
+    }
+    if (e instanceof AppException) {
+      AppException a = (AppException) e;
+      if ("DB_ERROR".equals(a.getCode()) || "CHECKOUT_FAILED".equals(a.getCode())
+          || "SERVER_ERROR".equals(a.getCode())) {
+        log.error("Browser flow error", e);
+        return "Something went wrong. Please try again.";
+      }
+      return a.getMessage();
+    }
+    log.error("Browser flow error", e);
+    return "Something went wrong. Please try again.";
+  }
+
+  /**
+   * Redirect target for browser flows: back to referring page or a fallback.
+   * @param req request
+   * @param fallback context-relative fallback path
+   * @return redirect URL
+   */
+  protected String back(HttpServletRequest req, String fallback) {
+    String ref = req.getHeader("Referer");
+    String ctx = req.getContextPath();
+    if (ref != null && ref.contains(ctx + "/")) {
+      return ref;
+    }
+    return ctx + fallback;
+  }
 }

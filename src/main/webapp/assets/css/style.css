@@ -81,3 +81,8 @@ input,textarea,select{width:100%;padding:.5rem;margin-top:.2rem}
 .qtyform{display:flex;gap:.5rem;align-items:center;margin-top:.4rem}
 .qtyform label{display:inline;margin:0}
 .qtyform input{width:80px}
+/* Flash messages (Post-Redirect-Get browser flows) */
+.flash{max-width:1000px;margin:.7rem auto 0;padding:.7rem 1rem;border-radius:8px;font-size:.95rem}
+.wrap .flash,.shopwrap .flash{margin-left:0;margin-right:0}
+.flash.ok{background:#d1fae5;color:#065f46;border:1px solid #6ee7b7}
+.flash.err{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}

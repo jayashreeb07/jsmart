@@ -62,11 +62,11 @@ public class CheckoutServlet extends BaseServlet {
       if (isApi) {
         sendError(resp, e);
       } else {
-        req.setAttribute("message", e.getMessage());
+        com.js.jsmart.util.Flash.error(req, friendly(e));
         try {
-          req.getRequestDispatcher("/WEB-INF/views/checkout.jsp").forward(req, resp);
-        } catch (ServletException ex) {
-          log.error("checkout forward failed", ex);
+          resp.sendRedirect(back(req, "/checkout"));
+        } catch (IOException ex) {
+          log.error("checkout redirect failed", ex);
         }
       }
     }

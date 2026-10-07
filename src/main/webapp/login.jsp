@@ -5,6 +5,10 @@
 <main class="wrap narrow">
 <h1>Login</h1>
 <c:if test="${param.registered == '1'}"><p class="ok">Registered! Please login.</p></c:if>
+<c:if test="${param.loginmsg == 'cart'}"><p class="err">Please login to add products to your cart.</p></c:if>
+<c:if test="${param.loginmsg == 'checkout'}"><p class="err">Please login to complete checkout.</p></c:if>
+<c:if test="${param.loginmsg == 'orders'}"><p class="err">Please login to view your orders.</p></c:if>
+<c:if test="${param.loginmsg == 'auth'}"><p class="err">Please login to continue.</p></c:if>
 <form method="post" action="${pageContext.request.contextPath}/api/v1/auth/login">
 <label>Email <input name="email" type="email" required/></label>
 <label>Password <input name="password" type="password" required/></label>

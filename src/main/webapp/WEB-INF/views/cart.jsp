@@ -18,7 +18,7 @@
 </c:otherwise>
 </c:choose>
 <div class="grow"><b><c:out value="${i.productName}"/></b><br/>₹<c:out value="${i.unitPrice}"/> each
-<form class="qtyform" method="post" action="${pageContext.request.contextPath}/api/v1/cart">
+<form class="qtyform" method="post" action="${pageContext.request.contextPath}/cart">
 <input type="hidden" name="productId" value="${i.productId}"/>
 <label>Qty <input type="number" name="quantity" value="${i.quantity}" min="1" max="${i.stockQty}"/></label>
 <button type="submit">Update</button>

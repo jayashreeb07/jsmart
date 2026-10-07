@@ -71,9 +71,28 @@ public class CartServlet extends BaseServlet {
       if (req.getRequestURI().contains("/api/")) {
         JsonUtil.write(resp, 200, ApiResponse.ok(java.util.Collections.singletonMap("ok", true)));
       } else {
-        resp.sendRedirect(req.getContextPath() + "/cart");
+        com.js.jsmart.util.Flash.success(req, "Product added to cart successfully.");
+        resp.sendRedirect(back(req, "/cart"));
       }
     } catch (Exception e) {
+      if (!req.getRequestURI().contains("/api/")) {
+        if (e instanceof com.js.jsmart.exception.UnauthorizedException) {
+          com.js.jsmart.util.Flash.error(req, "Please login to add products to your cart.");
+          try {
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+          } catch (IOException ex) {
+            log.error("cart redirect failed", ex);
+          }
+          return;
+        }
+        com.js.jsmart.util.Flash.error(req, friendly(e));
+        try {
+          resp.sendRedirect(back(req, "/cart"));
+        } catch (IOException ex) {
+          log.error("cart redirect failed", ex);
+        }
+        return;
+      }
       try {
         sendError(resp, e);
       } catch (IOException ex) {

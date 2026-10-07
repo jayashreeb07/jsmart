@@ -46,3 +46,4 @@
   <a href="${pageContext.request.contextPath}/products?category=Toys+%26+Kids">Toys &amp; Kids</a>
   <a href="${pageContext.request.contextPath}/products?category=Sports+%26+Fitness">Sports</a>
 </nav>
+<jsp:include page="/WEB-INF/views/common/flash.jsp"/>

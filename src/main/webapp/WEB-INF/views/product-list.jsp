@@ -81,7 +81,7 @@
               </c:choose>
             </div>
             <div class="pactions">
-              <form method="post" action="${pageContext.request.contextPath}/api/v1/cart">
+              <form method="post" action="${pageContext.request.contextPath}/cart">
                 <input type="hidden" name="productId" value="${p.id}"/>
                 <input type="hidden" name="quantity" value="1"/>
                 <button class="btn" type="submit" ${p.stockQty <= 0 ? 'disabled' : ''}>Add to Cart</button>

@@ -50,6 +50,7 @@ public class LoginServlet extends BaseServlet {
       boolean isForm = req.getParameter("email") != null
           && (req.getContentType() == null || !req.getContentType().contains("json"));
       if (isForm) {
+        com.js.jsmart.util.Flash.success(req, "Login successful! Welcome to JS Mart.");
         String role = u.getRole().name();
         if ("ADMIN".equals(role)) {
           resp.sendRedirect(req.getContextPath() + "/admin/dashboard");
@@ -62,6 +63,13 @@ public class LoginServlet extends BaseServlet {
       }
       JsonUtil.write(resp, 200, ApiResponse.ok(UserResponseDTO.from(u)));
     } catch (Exception e) {
+      boolean isForm = req.getParameter("email") != null
+          && (req.getContentType() == null || !req.getContentType().contains("json"));
+      if (isForm) {
+        com.js.jsmart.util.Flash.error(req, "Invalid email or password.");
+        resp.sendRedirect(req.getContextPath() + "/login.jsp");
+        return;
+      }
       sendError(resp, e);
     }
   }

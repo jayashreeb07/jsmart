@@ -37,11 +37,22 @@ public class ReviewServlet extends BaseServlet {
       long id = reviews.add(u.getId(), productId, rating, comment);
       // form flow back to product page
       if (req.getContentType() == null || !req.getContentType().contains("json")) {
+        com.js.jsmart.util.Flash.success(req, "Review submitted successfully.");
         resp.sendRedirect(req.getContextPath() + "/product?id=" + productId);
         return;
       }
       JsonUtil.write(resp, 201, ApiResponse.ok(java.util.Collections.singletonMap("id", id)));
     } catch (Exception e) {
+      if (req.getContentType() == null || !req.getContentType().contains("json")) {
+        String pid = req.getParameter("productId");
+        com.js.jsmart.util.Flash.error(req, friendly(e));
+        try {
+          resp.sendRedirect(req.getContextPath() + "/product?id=" + (pid == null ? "" : pid));
+        } catch (IOException ex) {
+          log.error("review redirect failed", ex);
+        }
+        return;
+      }
       sendError(resp, e);
     }
   }

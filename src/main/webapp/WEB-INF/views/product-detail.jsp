@@ -32,7 +32,7 @@
         <c:otherwise><span class="badge in">In stock (<c:out value="${product.stockQty}"/> available)</span></c:otherwise>
       </c:choose>
     </div>
-    <form method="post" action="${pageContext.request.contextPath}/api/v1/cart" class="dform">
+    <form method="post" action="${pageContext.request.contextPath}/cart" class="dform">
       <input type="hidden" name="productId" value="${product.id}"/>
       <label>Qty <input type="number" name="quantity" value="1" min="1" max="${product.stockQty}"/></label>
       <button class="btn" type="submit" ${product.stockQty <= 0 ? 'disabled' : ''}>Add to Cart</button>

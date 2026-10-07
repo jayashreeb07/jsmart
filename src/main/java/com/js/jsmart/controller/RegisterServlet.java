@@ -29,15 +29,23 @@ public class RegisterServlet extends BaseServlet {
         r.setRole(req.getParameter("role"));
       }
       UserResponseDTO out = auth.register(r);
-      // form-post flow: redirect to login
+      // form-post flow: flash + redirect to login
       boolean isForm = req.getParameter("email") != null
           && (req.getContentType() == null || !req.getContentType().contains("json"));
       if (isForm) {
+        com.js.jsmart.util.Flash.success(req, "Registration successful! Please login to continue.");
         resp.sendRedirect(req.getContextPath() + "/login.jsp?registered=1");
         return;
       }
       JsonUtil.write(resp, 201, ApiResponse.ok(out));
     } catch (Exception e) {
+      boolean isForm = req.getParameter("email") != null
+          && (req.getContentType() == null || !req.getContentType().contains("json"));
+      if (isForm) {
+        com.js.jsmart.util.Flash.error(req, friendly(e));
+        resp.sendRedirect(req.getContextPath() + "/register.jsp");
+        return;
+      }
       sendError(resp, e);
     }
   }

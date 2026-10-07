@@ -15,8 +15,14 @@ public class LogoutServlet extends BaseServlet {
     if (s != null) {
       s.invalidate();
     }
-    resp.setContentType("application/json;charset=UTF-8");
-    resp.getWriter().write("{\"success\":true,\"data\":{\"message\":\"Logged out\"},\"error\":null}");
+    // API callers keep JSON; browsers get flash + redirect.
+    if (req.getRequestURI().contains("/api/")) {
+      resp.setContentType("application/json;charset=UTF-8");
+      resp.getWriter().write("{\"success\":true,\"data\":{\"message\":\"Logged out\"},\"error\":null}");
+      return;
+    }
+    com.js.jsmart.util.Flash.success(req, "Logged out successfully.");
+    resp.sendRedirect(req.getContextPath() + "/login.jsp");
   }
 
   @Override

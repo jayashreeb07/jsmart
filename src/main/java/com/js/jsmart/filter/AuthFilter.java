@@ -30,7 +30,16 @@ public class AuthFilter implements Filter {
         r.getWriter().write("{\"success\":false,\"data\":null,"
             + "\"error\":{\"code\":\"UNAUTHORIZED\",\"message\":\"Login required\"}}");
       } else {
-        r.sendRedirect(h.getContextPath() + "/login.jsp?next=" + h.getRequestURI());
+        String key = "auth";
+        if (path.startsWith("/cart")) {
+          key = "cart";
+        } else if (path.startsWith("/checkout")) {
+          key = "checkout";
+        } else if (path.startsWith("/orders")) {
+          key = "orders";
+        }
+        r.sendRedirect(h.getContextPath() + "/login.jsp?next=" + h.getRequestURI()
+            + "&loginmsg=" + key);
       }
       return;
     }
