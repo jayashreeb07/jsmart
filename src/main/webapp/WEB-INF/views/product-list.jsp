@@ -14,11 +14,15 @@
       <input type="hidden" name="sort" value="<c:out value='${param.sort}'/>"/>
       <h4>Category</h4>
       <label class="check"><input type="radio" name="category" value="" ${empty param.category ? 'checked' : ''}/> All</label>
-      <label class="check"><input type="radio" name="category" value="Mobiles" ${param.category=='Mobiles' ? 'checked' : ''}/> Mobiles</label>
-      <label class="check"><input type="radio" name="category" value="Laptops" ${param.category=='Laptops' ? 'checked' : ''}/> Laptops</label>
-      <label class="check"><input type="radio" name="category" value="Headphones" ${param.category=='Headphones' ? 'checked' : ''}/> Headphones</label>
-      <label class="check"><input type="radio" name="category" value="Tablets" ${param.category=='Tablets' ? 'checked' : ''}/> Tablets</label>
-      <label class="check"><input type="radio" name="category" value="Accessories" ${param.category=='Accessories' ? 'checked' : ''}/> Accessories</label>
+      <label class="check"><input type="radio" name="category" value="Mobiles &amp; Electronics" ${param.category=='Mobiles & Electronics' ? 'checked' : ''}/> Mobiles &amp; Electronics</label>
+      <label class="check"><input type="radio" name="category" value="Fashion" ${param.category=='Fashion' ? 'checked' : ''}/> Fashion</label>
+      <label class="check"><input type="radio" name="category" value="Footwear" ${param.category=='Footwear' ? 'checked' : ''}/> Footwear</label>
+      <label class="check"><input type="radio" name="category" value="Home &amp; Kitchen" ${param.category=='Home & Kitchen' ? 'checked' : ''}/> Home &amp; Kitchen</label>
+      <label class="check"><input type="radio" name="category" value="Beauty &amp; Personal Care" ${param.category=='Beauty & Personal Care' ? 'checked' : ''}/> Beauty &amp; Personal Care</label>
+      <label class="check"><input type="radio" name="category" value="Bags, Watches &amp; Accessories" ${param.category=='Bags, Watches & Accessories' ? 'checked' : ''}/> Bags, Watches &amp; Accessories</label>
+      <label class="check"><input type="radio" name="category" value="Books &amp; Stationery" ${param.category=='Books & Stationery' ? 'checked' : ''}/> Books &amp; Stationery</label>
+      <label class="check"><input type="radio" name="category" value="Toys &amp; Kids" ${param.category=='Toys & Kids' ? 'checked' : ''}/> Toys &amp; Kids</label>
+      <label class="check"><input type="radio" name="category" value="Sports &amp; Fitness" ${param.category=='Sports & Fitness' ? 'checked' : ''}/> Sports &amp; Fitness</label>
       <h4>Price (₹)</h4>
       <div class="pricerow">
         <input name="minPrice" type="number" min="0" placeholder="Min" value="<c:out value='${param.minPrice}'/>"/>
@@ -82,7 +86,7 @@
                 <input type="hidden" name="quantity" value="1"/>
                 <button class="btn" type="submit" ${p.stockQty <= 0 ? 'disabled' : ''}>Add to Cart</button>
               </form>
-              <a class="linkbtn" href="${pageContext.request.contextPath}/product?id=${p.id}">Details</a>
+              <a class="linkbtn" href="${pageContext.request.contextPath}/product?id=${p.id}">View Details</a>
             </div>
           </div>
         </div>

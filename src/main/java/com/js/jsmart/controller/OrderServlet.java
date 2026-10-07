@@ -54,6 +54,18 @@ public class OrderServlet extends BaseServlet {
         JsonUtil.write(resp, 200, ApiResponse.ok(list));
         return;
       }
+      // Buyer-facing tracking page: /orders/{id} (ownership enforced server-side)
+      if (uri.matches(".*/orders/\\d+")) {
+        long id = Long.parseLong(uri.substring(uri.lastIndexOf('/') + 1));
+        Order o = orders.detail(u.getId(), role, id);
+        if ("BUYER".equals(role) && o.getBuyerId() != u.getId()) {
+          resp.sendError(403);
+          return;
+        }
+        req.setAttribute("order", o);
+        req.getRequestDispatcher("/WEB-INF/views/order-tracking.jsp").forward(req, resp);
+        return;
+      }
       req.setAttribute("orders", list);
       req.getRequestDispatcher("/WEB-INF/views/orders.jsp").forward(req, resp);
     } catch (Exception e) {

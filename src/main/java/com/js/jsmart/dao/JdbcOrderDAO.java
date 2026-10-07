@@ -31,7 +31,7 @@ public class JdbcOrderDAO implements OrderDAO {
   }
 
   private List<OrderItem> itemsFor(Connection con, long orderId) throws SQLException {
-    String sql = "SELECT oi.*, p.name AS product_name FROM order_items oi"
+    String sql = "SELECT oi.*, p.name AS product_name, p.image_url AS product_image FROM order_items oi"
         + " LEFT JOIN products p ON p.id = oi.product_id WHERE oi.order_id = ?";
     try (PreparedStatement ps = con.prepareStatement(sql)) {
       ps.setLong(1, orderId);
@@ -43,6 +43,11 @@ public class JdbcOrderDAO implements OrderDAO {
           i.setOrderId(rs.getLong("order_id"));
           i.setProductId(rs.getLong("product_id"));
           i.setProductName(rs.getString("product_name"));
+          try {
+            i.setProductImage(rs.getString("product_image"));
+          } catch (SQLException e) {
+            i.setProductImage(null);
+          }
           i.setQuantity(rs.getInt("quantity"));
           i.setUnitPrice(rs.getBigDecimal("unit_price"));
           out.add(i);

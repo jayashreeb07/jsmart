@@ -8,11 +8,15 @@
 <p><a class="btn" href="${pageContext.request.contextPath}/products">Browse products</a></p>
 <h2>Shop by category</h2>
 <div class="grid">
-<a class="card" href="${pageContext.request.contextPath}/products?category=Mobiles">Mobiles</a>
-<a class="card" href="${pageContext.request.contextPath}/products?category=Laptops">Laptops</a>
-<a class="card" href="${pageContext.request.contextPath}/products?category=Headphones">Headphones</a>
-<a class="card" href="${pageContext.request.contextPath}/products?category=Tablets">Tablets</a>
-<a class="card" href="${pageContext.request.contextPath}/products?category=Accessories">Accessories</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Mobiles+%26+Electronics">Mobiles &amp; Electronics</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Fashion">Fashion</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Footwear">Footwear</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Home+%26+Kitchen">Home &amp; Kitchen</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Beauty+%26+Personal+Care">Beauty &amp; Personal Care</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Bags%2C+Watches+%26+Accessories">Bags, Watches &amp; Accessories</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Books+%26+Stationery">Books &amp; Stationery</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Toys+%26+Kids">Toys &amp; Kids</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Sports+%26+Fitness">Sports &amp; Fitness</a>
 </div>
 </main>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

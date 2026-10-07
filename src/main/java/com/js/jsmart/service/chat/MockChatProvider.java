@@ -21,6 +21,14 @@ public class MockChatProvider implements ChatProvider {
     FAQ.put("discount", "Current demo promo: use code JSMART10 for 10% off at mock checkout.");
     FAQ.put("account", "Register as BUYER or SELLER. Admin accounts are created by seed data only.");
     FAQ.put("contact", "Reach us at support@jsmart.local. This is a demo storefront.");
+    FAQ.put("categor", "JS Mart has 9 categories: Mobiles & Electronics, Fashion, Footwear, Home & Kitchen,"
+        + " Beauty & Personal Care, Bags Watches & Accessories, Books & Stationery, Toys & Kids, Sports & Fitness.");
+    FAQ.put("available", "We stock 50 products across mobiles, fashion, footwear, home & kitchen, beauty,"
+        + " bags, books, toys and sports. Use search or category filters to browse.");
+    FAQ.put("cart", "To add a product: open its page and click Add to Cart. View and update quantities under Cart.");
+    FAQ.put("order", "To place an order: add items to cart, open Checkout, confirm mock payment, and your order is created.");
+    FAQ.put("status", "Order status flows PENDING > CONFIRMED > SHIPPED > DELIVERED. Open My Orders > View/Track Order for the live status.");
+    FAQ.put("cancel", "Buyers can cancel an order while it is still PENDING. Sellers and admins advance the other statuses.");
   }
 
   @Override

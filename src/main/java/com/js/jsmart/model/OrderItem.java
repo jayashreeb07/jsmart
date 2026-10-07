@@ -9,6 +9,7 @@ public class OrderItem {
   private long orderId;
   private long productId;
   private String productName;
+  private String productImage;
   private int quantity;
   private BigDecimal unitPrice;
   private LocalDateTime createdAt;
@@ -21,6 +22,8 @@ public class OrderItem {
   public void setProductId(long productId) { this.productId = productId; }
   public String getProductName() { return productName; }
   public void setProductName(String productName) { this.productName = productName; }
+  public String getProductImage() { return productImage; }
+  public void setProductImage(String productImage) { this.productImage = productImage; }
   public int getQuantity() { return quantity; }
   public void setQuantity(int quantity) { this.quantity = quantity; }
   public BigDecimal getUnitPrice() { return unitPrice; }
