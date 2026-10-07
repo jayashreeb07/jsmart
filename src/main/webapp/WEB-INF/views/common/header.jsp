@@ -2,13 +2,14 @@
 <header class="nav">
   <a class="brand" href="${pageContext.request.contextPath}/index.jsp">🛒 JS Mart</a>
   <form class="search" action="${pageContext.request.contextPath}/products" method="get">
-    <input name="q" placeholder="Search products..." value="<c:out value='${param.q}'/>"/>
+    <input name="q" placeholder="Search for mobiles, laptops, headphones..." value="<c:out value='${param.q}'/>"/>
     <select name="category">
-      <option value="">All</option>
-      <option <c:if test="${param.category=='Electronics'}">selected</c:if>>Electronics</option>
-      <option <c:if test="${param.category=='Fashion'}">selected</c:if>>Fashion</option>
-      <option <c:if test="${param.category=='Home'}">selected</c:if>>Home</option>
-      <option <c:if test="${param.category=='Books'}">selected</c:if>>Books</option>
+      <option value="">All Categories</option>
+      <option <c:if test="${param.category=='Mobiles'}">selected</c:if>>Mobiles</option>
+      <option <c:if test="${param.category=='Laptops'}">selected</c:if>>Laptops</option>
+      <option <c:if test="${param.category=='Headphones'}">selected</c:if>>Headphones</option>
+      <option <c:if test="${param.category=='Tablets'}">selected</c:if>>Tablets</option>
+      <option <c:if test="${param.category=='Accessories'}">selected</c:if>>Accessories</option>
     </select>
     <button type="submit">Search</button>
   </form>

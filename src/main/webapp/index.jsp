@@ -6,12 +6,13 @@
 <h1>Welcome to JS Mart</h1>
 <p>Demo e-commerce: browse, cart, mock checkout, reviews, chatbot.</p>
 <p><a class="btn" href="${pageContext.request.contextPath}/products">Browse products</a></p>
-<h2>Categories</h2>
+<h2>Shop by category</h2>
 <div class="grid">
-<a class="card" href="${pageContext.request.contextPath}/products?category=Electronics">Electronics</a>
-<a class="card" href="${pageContext.request.contextPath}/products?category=Fashion">Fashion</a>
-<a class="card" href="${pageContext.request.contextPath}/products?category=Home">Home</a>
-<a class="card" href="${pageContext.request.contextPath}/products?category=Books">Books</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Mobiles">Mobiles</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Laptops">Laptops</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Headphones">Headphones</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Tablets">Tablets</a>
+<a class="card" href="${pageContext.request.contextPath}/products?category=Accessories">Accessories</a>
 </div>
 </main>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

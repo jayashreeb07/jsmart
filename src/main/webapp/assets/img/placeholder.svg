@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
+  <rect width="640" height="480" fill="#e5e7eb"/>
+  <g fill="none" stroke="#9ca3af" stroke-width="10">
+    <rect x="220" y="150" width="200" height="150" rx="12"/>
+    <circle cx="320" cy="205" r="28"/>
+    <path d="M220 285 L280 235 L330 275 L370 245 L420 285"/>
+  </g>
+  <text x="320" y="340" font-family="Arial,sans-serif" font-size="28" fill="#6b7280" text-anchor="middle">JS Mart</text>
+</svg>

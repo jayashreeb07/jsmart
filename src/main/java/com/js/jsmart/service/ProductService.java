@@ -25,8 +25,36 @@ public class ProductService {
 
   /** Browse with filters. */
   public List<Product> browse(String category, String keyword, int limit, int offset) {
+    return browse(category, keyword, null, null, null, limit, offset);
+  }
+
+  /**
+   * Browse with optional price range and sort. Filtering/sorting is applied
+   * in memory over the DAO result; invalid values are ignored.
+   * @param minPrice minimum price or null
+   * @param maxPrice maximum price or null
+   * @param sort one of price_asc, price_desc, rating, newest
+   * @return filtered products
+   */
+  public List<Product> browse(String category, String keyword, java.math.BigDecimal minPrice,
+      java.math.BigDecimal maxPrice, String sort, int limit, int offset) {
     try {
-      return productDAO.search(category, keyword, limit <= 0 ? 24 : limit, Math.max(0, offset));
+      List<Product> list =
+          productDAO.search(category, keyword, limit <= 0 ? 24 : limit, Math.max(0, offset));
+      if (minPrice != null) {
+        list.removeIf(p -> p.getPrice() == null || p.getPrice().compareTo(minPrice) < 0);
+      }
+      if (maxPrice != null) {
+        list.removeIf(p -> p.getPrice() == null || p.getPrice().compareTo(maxPrice) > 0);
+      }
+      if ("price_asc".equals(sort)) {
+        list.sort(java.util.Comparator.comparing(Product::getPrice));
+      } else if ("price_desc".equals(sort)) {
+        list.sort(java.util.Comparator.comparing(Product::getPrice).reversed());
+      } else if ("rating".equals(sort)) {
+        list.sort(java.util.Comparator.comparingDouble(Product::getAvgRating).reversed());
+      }
+      return list;
     } catch (SQLException e) {
       throw new AppException(500, "DB_ERROR", "Search failed");
     }

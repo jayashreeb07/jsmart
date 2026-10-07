@@ -120,12 +120,26 @@ public class AppContextListener implements ServletContextListener {
     String sql = "INSERT INTO products (seller_id, name, description, price, stock_qty, category, image_url)"
         + " VALUES (?, ?, ?, ?, ?, ?, ?)";
     Object[][] rows = {
-        {2L, "JS Bluetooth Speaker", "Portable speaker, 12h battery.", "2499.00", 50, "Electronics", ""},
-        {2L, "Cotton T-Shirt", "Premium cotton tee.", "499.00", 200, "Fashion", ""},
-        {3L, "Steel Bottle", "1L insulated flask.", "899.00", 120, "Home", ""},
-        {3L, "Java Programming Book", "Learn Java 17.", "650.00", 80, "Books", ""},
-        {2L, "Wireless Mouse", "Ergonomic mouse.", "799.00", 150, "Electronics", ""},
-        {3L, "Running Shoes", "Lightweight shoes.", "1999.00", 60, "Fashion", ""},
+        {2L, "Nova X5 Smartphone", "6.5-inch display, 128GB storage, 5000mAh battery.", "14999.00", 40,
+            "Mobiles", "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=640&q=70"},
+        {3L, "Pixel Pro 12 Smartphone", "Triple camera, 256GB storage, fast charging.", "32999.00", 25,
+            "Mobiles", "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=640&q=70"},
+        {2L, "UltraBook Air 14 Laptop", "14-inch laptop, 16GB RAM, 512GB SSD for work and study.", "58990.00", 15,
+            "Laptops", "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=640&q=70"},
+        {3L, "ProBook 15 Laptop", "15.6-inch laptop, dedicated graphics, backlit keyboard.", "72990.00", 10,
+            "Laptops", "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=640&q=70"},
+        {2L, "Sonic Bass Headphones", "Over-ear headphones with deep bass and 30h battery.", "2499.00", 60,
+            "Headphones", "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=640&q=70"},
+        {3L, "Aero Wireless Headphones", "Lightweight wireless headphones with noise isolation.", "3999.00", 45,
+            "Headphones", "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=640&q=70"},
+        {2L, "Slate Tab 10 Tablet", "10-inch tablet for reading, video and classes.", "12999.00", 30,
+            "Tablets", "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=640&q=70"},
+        {3L, "Slate Tab Pro 11 Tablet", "11-inch tablet with stylus support and vivid display.", "21999.00", 20,
+            "Tablets", "https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=640&q=70"},
+        {2L, "Pulse Smartwatch", "Fitness tracking, heart-rate monitor, 7-day battery.", "4999.00", 50,
+            "Accessories", "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=640&q=70"},
+        {3L, "Boom Mini Speaker", "Portable Bluetooth speaker with 12h playtime.", "1999.00", 70,
+            "Accessories", "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=640&q=70"},
     };
     for (Object[] r : rows) {
       try (PreparedStatement ps = c.prepareStatement(sql)) {

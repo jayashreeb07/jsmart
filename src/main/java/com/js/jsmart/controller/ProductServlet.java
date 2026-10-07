@@ -35,7 +35,8 @@ public class ProductServlet extends BaseServlet {
       if (isApi) {
         String category = req.getParameter("category");
         String q = req.getParameter("q");
-        List<Product> list = products.browse(category, q, 50, 0);
+        List<Product> list = products.browse(category, q, price(req.getParameter("minPrice")),
+            price(req.getParameter("maxPrice")), req.getParameter("sort"), 50, 0);
         com.js.jsmart.util.JsonUtil.write(resp, 200, ApiResponse.ok(list));
         return;
       }
@@ -54,7 +55,10 @@ public class ProductServlet extends BaseServlet {
       }
       String category = req.getParameter("category");
       String q = req.getParameter("q");
-      req.setAttribute("products", products.browse(category, q, 50, 0));
+      String sort = req.getParameter("sort");
+      req.setAttribute("products",
+          products.browse(category, q, price(req.getParameter("minPrice")),
+              price(req.getParameter("maxPrice")), sort, 50, 0));
       req.getRequestDispatcher("/WEB-INF/views/product-list.jsp").forward(req, resp);
     } catch (NumberFormatException e) {
       if (isApi) {
@@ -75,5 +79,18 @@ public class ProductServlet extends BaseServlet {
   /** Visible for tests. */
   public void setProductService(ProductService s) {
     this.products = s;
+  }
+
+  /** Parse optional price, ignoring invalid input. */
+  private static java.math.BigDecimal price(String raw) {
+    if (raw == null || raw.isBlank()) {
+      return null;
+    }
+    try {
+      java.math.BigDecimal v = new java.math.BigDecimal(raw.trim());
+      return v.signum() < 0 ? null : v;
+    } catch (NumberFormatException e) {
+      return null;
+    }
   }
 }
