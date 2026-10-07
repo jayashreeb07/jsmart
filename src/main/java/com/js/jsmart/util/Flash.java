@@ -24,4 +24,20 @@ public final class Flash {
     HttpSession s = req.getSession(true);
     s.setAttribute(ERR_KEY, message);
   }
+
+  /**
+   * Store a full-page success screen payload, then redirect to /success.jsp.
+   * @param title heading text
+   * @param message sub text
+   * @param button button label
+   * @param link context-relative button target
+   */
+  public static void successPage(HttpServletRequest req, String title,
+      String message, String button, String link) {
+    HttpSession s = req.getSession(true);
+    s.setAttribute("successTitle", title);
+    s.setAttribute("successMsg", message);
+    s.setAttribute("successBtn", button);
+    s.setAttribute("successLink", link);
+  }
 }

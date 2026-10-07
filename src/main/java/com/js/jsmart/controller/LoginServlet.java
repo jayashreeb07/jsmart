@@ -50,15 +50,16 @@ public class LoginServlet extends BaseServlet {
       boolean isForm = req.getParameter("email") != null
           && (req.getContentType() == null || !req.getContentType().contains("json"));
       if (isForm) {
-        com.js.jsmart.util.Flash.success(req, "Login successful! Welcome to JS Mart.");
         String role = u.getRole().name();
+        String home = "/index.jsp";
         if ("ADMIN".equals(role)) {
-          resp.sendRedirect(req.getContextPath() + "/admin/dashboard");
+          home = "/admin/dashboard";
         } else if ("SELLER".equals(role)) {
-          resp.sendRedirect(req.getContextPath() + "/seller/dashboard");
-        } else {
-          resp.sendRedirect(req.getContextPath() + "/index.jsp");
+          home = "/seller/dashboard";
         }
+        com.js.jsmart.util.Flash.successPage(req, "Login Successful! \uD83C\uDF89",
+            "Welcome back to JS Mart", "Continue Shopping", home);
+        resp.sendRedirect(req.getContextPath() + "/success.jsp");
         return;
       }
       JsonUtil.write(resp, 200, ApiResponse.ok(UserResponseDTO.from(u)));

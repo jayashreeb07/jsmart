@@ -21,8 +21,10 @@ public class LogoutServlet extends BaseServlet {
       resp.getWriter().write("{\"success\":true,\"data\":{\"message\":\"Logged out\"},\"error\":null}");
       return;
     }
-    com.js.jsmart.util.Flash.success(req, "Logged out successfully.");
-    resp.sendRedirect(req.getContextPath() + "/login.jsp");
+    com.js.jsmart.util.Flash.successPage(req, "Logged Out Successfully! \uD83C\uDF89",
+        "Thanks for shopping with JS Mart. See you again!",
+        "Go to Login", "/login.jsp");
+    resp.sendRedirect(req.getContextPath() + "/success.jsp");
   }
 
   @Override

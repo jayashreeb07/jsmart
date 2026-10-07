@@ -56,7 +56,10 @@ public class CheckoutServlet extends BaseServlet {
       if (isApi) {
         JsonUtil.write(resp, 201, ApiResponse.ok(java.util.Collections.singletonMap("orderId", orderId)));
       } else {
-        resp.sendRedirect(req.getContextPath() + "/orders?success=" + orderId);
+        com.js.jsmart.util.Flash.successPage(req, "Order placed successfully! \uD83C\uDF89",
+            "Order #" + orderId + " has been placed.",
+            "Track Order", "/orders/" + orderId);
+        resp.sendRedirect(req.getContextPath() + "/success.jsp");
       }
     } catch (Exception e) {
       if (isApi) {

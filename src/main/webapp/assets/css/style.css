@@ -86,3 +86,21 @@ input,textarea,select{width:100%;padding:.5rem;margin-top:.2rem}
 .wrap .flash,.shopwrap .flash{margin-left:0;margin-right:0}
 .flash.ok{background:#d1fae5;color:#065f46;border:1px solid #6ee7b7}
 .flash.err{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+/* Landing page */
+.landing{min-height:90vh;display:flex;align-items:center;justify-content:center;padding:2rem 1rem;
+background:linear-gradient(135deg,#eef2ff 0%,#f6f7fb 60%,#ecfdf5 100%)}
+.landingcard{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:3rem 2.5rem;max-width:560px;
+text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.landingicon{font-size:4rem;line-height:1}
+.landingcard h1{font-size:2.2rem;margin:.8rem 0 .3rem}
+.tagline{font-size:1.15rem;color:#374151}
+.landingactions{display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap}
+.btn.big{font-size:1.05rem;padding:.7rem 2rem}
+.btn.ghost{background:#fff;color:#111827;border:2px solid #111827}
+/* Reusable success screen */
+.successwrap{min-height:90vh;display:flex;align-items:center;justify-content:center;padding:2rem 1rem;background:#f6f7fb}
+.successcard{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:3rem 2.5rem;max-width:520px;
+text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.successicon{width:90px;height:90px;margin:0 auto 1rem;border-radius:50%;background:#d1fae5;color:#065f46;
+font-size:2.6rem;line-height:90px;font-weight:bold}
+@media(max-width:640px){.landingcard,.successcard{padding:2rem 1.2rem}}

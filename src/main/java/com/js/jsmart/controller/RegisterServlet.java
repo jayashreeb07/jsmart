@@ -33,8 +33,10 @@ public class RegisterServlet extends BaseServlet {
       boolean isForm = req.getParameter("email") != null
           && (req.getContentType() == null || !req.getContentType().contains("json"));
       if (isForm) {
-        com.js.jsmart.util.Flash.success(req, "Registration successful! Please login to continue.");
-        resp.sendRedirect(req.getContextPath() + "/login.jsp?registered=1");
+        com.js.jsmart.util.Flash.successPage(req, "Registration Successful! \uD83C\uDF89",
+            "Your JS Mart account has been created successfully.",
+            "Go to Login", "/login.jsp");
+        resp.sendRedirect(req.getContextPath() + "/success.jsp");
         return;
       }
       JsonUtil.write(resp, 201, ApiResponse.ok(out));
