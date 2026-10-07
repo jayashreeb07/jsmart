@@ -25,8 +25,8 @@ public class ReviewServlet extends BaseServlet {
       if (req.getContentType() != null && req.getContentType().contains("json")) {
         @SuppressWarnings("unchecked")
         java.util.Map<String, Object> body = JsonUtil.fromBody(req, java.util.Map.class);
-        productId = Long.parseLong(String.valueOf(body.get("productId")));
-        rating = Integer.parseInt(String.valueOf(body.get("rating")));
+        productId = JsonUtil.toLong(body.get("productId"));
+        rating = JsonUtil.toInt(body.get("rating"));
         if (body.get("comment") != null) {
           comment = String.valueOf(body.get("comment"));
         }

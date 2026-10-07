@@ -35,6 +35,7 @@ public class AppContextListener implements ServletContextListener {
     String user = ConfigUtil.get("db.user", "sa");
     String pass = ConfigUtil.get("db.password", "");
     HikariConfig cfg = new HikariConfig();
+    cfg.setDriverClassName("org.h2.Driver");
     cfg.setJdbcUrl(url);
     cfg.setUsername(user);
     cfg.setPassword(pass);

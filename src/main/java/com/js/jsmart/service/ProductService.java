@@ -91,19 +91,23 @@ public class ProductService {
     if (existing.getSellerId() != sellerId) {
       throw new ForbiddenException("You can delete only your own products");
     }
-    try {
-      productDAO.delete(productId);
-    } catch (SQLException e) {
-      throw new AppException(500, "DB_ERROR", "Delete failed");
-    }
+    deleteOrThrow(productId);
   }
 
   /** Admin removes any listing (moderation). */
   public void adminDelete(long productId) {
     getOrThrow(productId);
+    deleteOrThrow(productId);
+  }
+
+  /** Delete with clean conflict when orders reference the product. */
+  private void deleteOrThrow(long productId) {
     try {
       productDAO.delete(productId);
     } catch (SQLException e) {
+      if (e.getSQLState() != null && e.getSQLState().startsWith("23")) {
+        throw new AppException(409, "CONFLICT", "Cannot delete: product has existing orders");
+      }
       throw new AppException(500, "DB_ERROR", "Delete failed");
     }
   }

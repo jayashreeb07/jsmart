@@ -30,7 +30,9 @@ public class RegisterServlet extends BaseServlet {
       }
       UserResponseDTO out = auth.register(r);
       // form-post flow: redirect to login
-      if (req.getParameter("email") != null && req.getContentType() == null) {
+      boolean isForm = req.getParameter("email") != null
+          && (req.getContentType() == null || !req.getContentType().contains("json"));
+      if (isForm) {
         resp.sendRedirect(req.getContextPath() + "/login.jsp?registered=1");
         return;
       }

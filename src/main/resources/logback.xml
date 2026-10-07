@@ -4,8 +4,16 @@
       <pattern>%d{HH:mm:ss} [%X{requestId}] %-5level %logger{36} - %msg%n</pattern>
     </encoder>
   </appender>
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>${catalina.base:-.}/logs/jsmart.log</file>
+    <append>true</append>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} [%X{requestId}] %-5level %logger{36} - %msg%n%ex</pattern>
+    </encoder>
+  </appender>
   <root level="INFO">
     <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE"/>
   </root>
   <logger name="com.js.jsmart" level="DEBUG"/>
   <logger name="com.zaxxer.hikari" level="INFO"/>

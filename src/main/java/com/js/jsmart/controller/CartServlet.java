@@ -57,10 +57,10 @@ public class CartServlet extends BaseServlet {
         Map<String, Object> body = JsonUtil.fromBody(req, Map.class);
         if (body != null) {
           if (body.get("productId") != null) {
-            productId = Long.parseLong(String.valueOf(body.get("productId")));
+            productId = JsonUtil.toLong(body.get("productId"));
           }
           if (body.get("quantity") != null) {
-            quantity = Integer.parseInt(String.valueOf(body.get("quantity")));
+            quantity = JsonUtil.toInt(body.get("quantity"));
           }
         }
       } else {
