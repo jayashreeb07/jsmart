@@ -2,6 +2,12 @@
 
 JS Mart is an e-commerce marketplace built with Java Servlets, JSP and JDBC as a college capstone project. Buyers can browse products, use a cart, place orders and track them, while sellers can manage their products and orders.
 
+## Live Demo
+
+The application is deployed on Render:
+
+https://jsmart-1.onrender.com/jsmart/
+
 ## Features
 
 * Buyer and seller registration/login
